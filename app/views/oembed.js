@@ -1,15 +1,22 @@
 import Ember from 'ember';
+
 export default Ember.View.extend({
-  keyUp: function(evt) {
+	 
+	click:function(evt){
     var tagdata = [];
     var eventdata = [];
     var scriptruns = [];
-    var text = $('#contenido').val();
+	var contenido=$(evt.target).parents('.timeline-body').find('.cont');
+    var text = contenido.text();
     text = $('<span>'+text+'</span>').text(); //strip html
     text = text.replace(/(\s|>|^)(https?:[^\s<]*)/igm,'$1<div class="ancho-video"><a href="$2" class="oembed">$2</a></div>');
     text = text.replace(/(\s|>|^)(mailto:[^\s<]*)/igm,'$1<div class="ancho-video"><a href="$2" class="oembed">$2</a></div>');
-    $('#out').empty().html(text); 
-   $("#out .oembed").oembed(null,{
+    
+    contenido.siblings('.cont1').empty().html(text); 
+    console.dir(contenido.siblings('.cont1').length);
+    contenido.html('');
+    
+    $(evt.target).parents('.timeline-body').find(".oembed").oembed(null,{
         maxWidth: 300,
       maxHeight: 200,
       apikeys: {
@@ -19,8 +26,7 @@ export default Ember.View.extend({
       },
       //maxHeight: 200, maxWidth:300
     });
+    $(evt.target).remove();
+	}
 
-  } 
-}); 
-
- 
+});
