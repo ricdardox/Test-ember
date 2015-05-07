@@ -1,0 +1,58 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+ 
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span> 
+      </button>
+		<a class="navbar-brand" href="#">Prueba técnica Nullindustries</a>
+     <ul class="nav navbar-nav">
+        <li><a href="posts/nuevo">Nuevo post<span class="sr-only">(current)</span></a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<section>
+	
+  <div class="container">
+		{{outlet}}
+	</div>
+
+
+  <div class="container">
+    <div class="page-header">
+        <h1 id="timeline">Timeline</h1>
+    </div>
+    <ul class="timeline">
+   
+    {{#each}}
+          <li id={{id}}>
+          <div class="timeline-badge"><span class="glyphicon glyphicon-record"></span></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title">
+                {{titulo}}
+              </h4>
+              <p>
+                <small class="text-muted">
+                  <i class="glyphicon glyphicon-time"></i> {{fecha}}
+                </small>
+              </p>
+            </div>
+            <div class="timeline-body" >
+              <p>{{contenido}}</p> 
+              <p>{{autor}}</p>
+            </div>
+            <hr> 
+          </div>
+        </li>    
+{{/each}}
+    
+    </ul>
+</div>
+
+</section>
+ 
+
+ 
